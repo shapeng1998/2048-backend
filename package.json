@@ -1,7 +1,11 @@
 {
   "name": "2048-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Server side of 2048 game.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shapeng1998/2048-backend.git"
+  },
   "main": "server.js",
   "scripts": {
     "start": "node server",
