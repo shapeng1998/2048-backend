@@ -1,0 +1,6 @@
+{
+  "name": "2048-backend",
+  "description": "The apis of 2048 game",
+  "forceLanguage": "zh-cn",
+  "url": "http://47.101.139.249:3000/api"
+}
