@@ -1,6 +1,6 @@
 # 2048-backend
 
-![workflow name](https://github.com/shapeng1998/Blog/workflows/build/badge.svg)
+![workflow name](https://github.com/shapeng1998/2048-backend/workflows/build/badge.svg)
 
 > A simple 2048 game backend using [Express](https://www.expressjs.com), [MongoDB](https://www.mongodb.com/) and [Socket.IO](https://socket.io/).
 
