@@ -1,0 +1,15 @@
+name: 2048 backend CI/CD
+on:
+  push:
+    branches: [main]
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Image
+        run: docker build . -t ${{ secrets.DOCKER_REPOSITORY }}:latest
+      - name: Login to registry
+        run: docker login --username=${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }} {{ secrets.DOCKER_ADDRESS }}
+      - name: Push Image
+        run: docker push ${{ secrets.DOCKER_REPOSITORY }}:latest
