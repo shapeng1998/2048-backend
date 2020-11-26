@@ -14,7 +14,7 @@ jobs:
       - name: Push Image
         run: docker push ${{ secrets.DOCKER_REPOSITORY }}:latest
   deploy:
-    needs: [build]
+    needs: [build-and-push]
     name: Pull Docker
     runs-on: ubuntu-latest
     steps:
