@@ -53,15 +53,26 @@ router.get('/', async (req, res) => {
   }
 });
 
+// router.get('/:id', getPlayer, async (req, res) => {
+//   res.json(res.player);
+// });
+
 /**
- * @api {get} /players/:id Request one player info
+ * @api {get} /players/:nickname Request one player info
  * @apiVersion 1.0.0
  * @apiName GetOnePlayer
  * @apiGroup Player
- * @apiParam  {Number} id the player id
+ * @apiParam  {String} nickname the player nickname
  */
-router.get('/:id', getPlayer, async (req, res) => {
-  res.json(res.player);
+router.get('/:nickname', async (req, res) => {
+  try {
+    const player = await Player.findOne({
+      nickname: req.params.nickname,
+    });
+    res.json(player);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 /**
