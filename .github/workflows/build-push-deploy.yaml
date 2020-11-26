@@ -3,18 +3,18 @@ on:
   push:
     branches: [main]
 jobs:
-  # build-and-push:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Build Image
-  #       run: docker build . -t ${{ secrets.DOCKER_REPOSITORY }}:latest
-  #     - name: Login to registry
-  #       run: docker login --username=${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }} ${{ secrets.DOCKER_ADDRESS }}
-  #     - name: Push Image
-  #       run: docker push ${{ secrets.DOCKER_REPOSITORY }}:latest
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Image
+        run: docker build . -t ${{ secrets.DOCKER_REPOSITORY }}:latest
+      - name: Login to registry
+        run: docker login --username=${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }} ${{ secrets.DOCKER_ADDRESS }}
+      - name: Push Image
+        run: docker push ${{ secrets.DOCKER_REPOSITORY }}:latest
   deploy:
-    # needs: [build-and-push]
+    needs: [build-and-push]
     name: Pull Docker
     runs-on: ubuntu-latest
     steps:
@@ -26,4 +26,9 @@ jobs:
           password: ${{ secrets.HOST_PASSWORD }}
           port: ${{ secrets.HOST_PORT }}
           script: |
-            neofetch
+            docker stop $(docker ps --filter ancestor=${{ secrets.DOCKER_REPOSITORY }} -q)
+            docker rm -f $(docker ps -a --filter ancestor=${{ secrets.DOCKER_REPOSITORY }}:latest -q)
+            docker rmi -f $(docker images ${{ secrets.DOCKER_REPOSITORY }}:latest -q)
+            docker login --username=${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }} ${{ secrets.DOCKER_ADDRESS }}
+            docker pull ${{ secrets.DOCKER_REPOSITORY }}:latest
+            docker run -d -p 3000:3000 ${{ secrets.DOCKER_REPOSITORY }}:latest
