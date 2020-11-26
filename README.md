@@ -19,3 +19,7 @@ npm install
 # develop
 npm run dev
 ```
+
+## Related Project
+
+- [2048-frontend](https://github.com/ajdlkajd/2048-frontend)
