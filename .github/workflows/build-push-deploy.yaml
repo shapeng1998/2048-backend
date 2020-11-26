@@ -1,4 +1,4 @@
-name: 2048 backend CI/CD
+name: build
 on:
   push:
     branches: [main]
