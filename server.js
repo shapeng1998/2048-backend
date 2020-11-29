@@ -42,6 +42,7 @@ function getPlayersInRoom(room) {
   return players;
 }
 
+// Socketio connections
 io.on('connection', (socket) => {
   let userData = { socket, nickname: '' };
   socket.on('join', async ({ nickname }) => {
