@@ -9,7 +9,7 @@ const { joinWaitingPlayers, trowPlayersOut } = require('./socketsData');
 const app = express();
 
 // Port
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 
 // Middlewares
 app.use(cors());
