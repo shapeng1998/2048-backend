@@ -1,3 +1,4 @@
+// The model of players
 const mongoose = require('mongoose');
 
 const playersSchema = new mongoose.Schema({
