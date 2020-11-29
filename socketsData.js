@@ -2,29 +2,29 @@ const { v4: uuidv4 } = require('uuid');
 
 const games = {};
 
-const joinWaitingPlayers = (playersInLobby) => {
+function joinWaitingPlayers(playersInLobby) {
   const gameId = `game ${uuidv4()}`;
 
-  // Create game room
+  // create game room
   games[gameId] = {
     players: [],
   };
 
-  playersInLobby.map((players) => {
-    players.leave('lobby');
-    players.join(gameId);
-    games[gameId].players.push(players.id);
+  playersInLobby.map((player) => {
+    player.leave('lobby');
+    player.join(gameId);
+    games[gameId].players.push(player.id);
   });
 
   return gameId;
-};
+}
 
-const trowPlayersOut = (playersInRoom, gameId) => {
+function trowPlayersOut(playersInRoom, gameId) {
   delete games[gameId];
-  playersInRoom.map((players) => {
-    players.leave(gameId);
+  playersInRoom.map((player) => {
+    player.leave(gameId);
   });
-};
+}
 
 module.exports = {
   joinWaitingPlayers,
