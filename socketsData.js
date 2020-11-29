@@ -2,7 +2,7 @@ const { v4: uuidv4 } = require('uuid');
 
 const games = {};
 
-export const joinWaitingPlayers = (playersInLobby) => {
+const joinWaitingPlayers = (playersInLobby) => {
   const gameId = `game ${uuidv4()}`;
 
   // Create game room
@@ -19,9 +19,14 @@ export const joinWaitingPlayers = (playersInLobby) => {
   return gameId;
 };
 
-export const trowPlayersOut = (playersInRoom, gameId) => {
+const trowPlayersOut = (playersInRoom, gameId) => {
   delete games[gameId];
   playersInRoom.map((players) => {
     players.leave(gameId);
   });
+};
+
+module.exports = {
+  joinWaitingPlayers,
+  trowPlayersOut,
 };
