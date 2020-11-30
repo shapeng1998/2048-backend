@@ -31,6 +31,6 @@ npm install
 npm run dev
 ```
 
-## Related Project
+## Related projects
 
 - [2048-frontend](https://github.com/shapeng1998/2048-frontend)
