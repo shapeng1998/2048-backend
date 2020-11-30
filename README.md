@@ -1,8 +1,8 @@
 # 2048-backend
 
-![workflow name](https://github.com/shapeng1998/2048-backend/workflows/build/badge.svg)
+![build](https://github.com/shapeng1998/2048-backend/workflows/build/badge.svg)
 
-> A simple 2048 game backend using [Express](https://www.expressjs.com), [MongoDB](https://www.mongodb.com/) and [Socket.IO](https://socket.io/).
+> A simple 2048 game backend using [Express](https://www.expressjs.com), [MongoDB](https://www.mongodb.com/) and [Socket.IO](https://socket.io/). The multi-player logic is referenced from project [2048-multiplayer-server](https://github.com/pietrushka/2048-multiplayer-server)
 
 ## Build setup
 
@@ -22,4 +22,4 @@ npm run dev
 
 ## Related Project
 
-- [2048-frontend](https://github.com/ajdlkajd/2048-frontend)
+- [2048-frontend](https://github.com/shapeng1998/2048-frontend)
