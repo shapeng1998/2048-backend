@@ -10,6 +10,7 @@
 2. Easy and hard mode
 3. Multi-player chatting
 4. Preparation part of multi-player phase
+5. Fluent animation
 
 ## Dev setup
 
