@@ -1,4 +1,4 @@
-name: build
+name: backend build
 on:
   push:
     branches: [main]
